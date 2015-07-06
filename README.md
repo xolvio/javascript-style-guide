@@ -1504,29 +1504,29 @@
 
 ## Semicolons
 
-  - [20.1](#20.1) <a name='20.1'></a> **Yup.**
+  - [20.1](#20.1) <a name='20.1'></a> **No, only when necessary.**
 
     ```javascript
     // bad
-    (function() {
-      const name = 'Skywalker'
-      return name
-    })()
+    const name = 'Skywalker';
+    return name;
 
     // good
-    (() => {
-      const name = 'Skywalker';
-      return name;
-    })();
+    const name = 'Skywalker'
+    return name
 
-    // good (guards against the function becoming an argument when two files with IIFEs are concatenated)
-    ;(() => {
-      const name = 'Skywalker';
-      return name;
-    })();
+    // the only practical case where you need a semicolon is when you start a statement with [ or (
+    someFunction()
+    ;[1, 2, 3].forEach(function () {
+      // ...
+    });  
     ```
+    
+    someFunction()
+    ;(a && b) || c
 
-    [Read more](http://stackoverflow.com/a/7365214/1712802).
+    [Learn more about automatic semicolon insertion (ASI)](http://inimino.org/~inimino/blog/javascript_semicolons)
+    
 
 **[⬆ back to top](#table-of-contents)**
 
